@@ -1,11 +1,17 @@
-export type roundType = 'Jeopardy!' | 'Double Jeopardy!' | 'Final Jeopardy!';
+export enum roundType {
+    round1 = "Jeopardy!",
+    round2 = "Double Jeopardy!",
+    round3 = "Final Jeopardy!"
+}
 
 export interface Question {
     ID: number
+    episode: number
+    airdate: string
     round: roundType
     category: string
     value: number
-    Prompt: string
-    Answer: string
+    prompt: string
+    answer: string
 }
 
