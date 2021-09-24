@@ -1,3 +1,6 @@
+import { Button } from 'react-bootstrap';
+
+
 export function ControlPanel(): JSX.Element {
-    return <div>Control Panel</div>
+    return <Button>Control Panel</Button>
 }
