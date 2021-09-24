@@ -1,3 +1,5 @@
+import {Col} from 'react-bootstrap';
+
 export function QuestionViewer(): JSX.Element {
-    return <div>Question Viewer</div>
+    return <Col><div>Question Viewer</div></Col>
 }
