@@ -1,12 +1,11 @@
-export enum Round {
-    Roun
-}
+export type roundType = 'Jeopardy!' | 'Double Jeopardy!' | 'Final Jeopardy!';
 
 export interface Question {
     ID: number
-    round: string
+    round: roundType
     category: string
-    value: string
+    value: number
     Prompt: string
     Answer: string
 }
+
