@@ -6,6 +6,7 @@ import { QuestionViewer } from './components/QuestionViewer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container , Row} from 'react-bootstrap';
 import { Question } from './interfaces/question';
+import { UserList } from './components/UserList';
 
 
 function App(): JSX.Element {
@@ -17,7 +18,8 @@ function App(): JSX.Element {
   return (
     <Container className="App">
       <Row>
-        <ControlPanel setQuestion={setActiveQuestion} reveal={reveal} answerRevealed={answerRevealed}> </ControlPanel>
+        
+        <ControlPanel setQuestion={setActiveQuestion} reveal={reveal} answerRevealed={answerRevealed}></ControlPanel>
         <QuestionViewer question={activeQuestion} answerRevealed={answerRevealed}></QuestionViewer>
       </Row>
     </Container>
