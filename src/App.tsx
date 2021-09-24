@@ -11,12 +11,14 @@ import { Question } from './interfaces/question';
 function App(): JSX.Element {
 
   const [activeQuestion, setActiveQuestion] = useState<Question>(QUESTIONS[0] as Question);
-
+  const [answerRevealed, reveal] = useState<boolean>(false);
+  console.log(`app ${answerRevealed}`);
+  
   return (
     <Container className="App">
       <Row>
-        <ControlPanel setQuestion={setActiveQuestion}> </ControlPanel>
-        <QuestionViewer question={activeQuestion}></QuestionViewer>
+        <ControlPanel setQuestion={setActiveQuestion} reveal={reveal} answerRevealed={answerRevealed}> </ControlPanel>
+        <QuestionViewer question={activeQuestion} answerRevealed={answerRevealed}></QuestionViewer>
       </Row>
     </Container>
   );

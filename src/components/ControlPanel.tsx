@@ -7,7 +7,8 @@ function getRandomElement<T>(items: T[]): T  {
     return items[Math.floor(Math.random()*items.length)];
 }
 
-export function ControlPanel({setQuestion}: {setQuestion: (q: Question)=>void}): JSX.Element {
+export function ControlPanel({setQuestion, reveal, answerRevealed}: 
+    {setQuestion: (q: Question)=>void, reveal: (r: boolean)=>void, answerRevealed: boolean}): JSX.Element {
     
     function setRandomQuestion() {
         setQuestion(getRandomElement(QUESTIONS as Question[]))
@@ -16,7 +17,7 @@ export function ControlPanel({setQuestion}: {setQuestion: (q: Question)=>void}):
     
     return <Col>
         <h1>Control Panel</h1>
-        {setQuestion}
+        <Button onClick={() => reveal(!answerRevealed)}>Reveal Answer</Button>
         <Button onClick={setRandomQuestion}>New Question</Button>
     </Col>
 }
