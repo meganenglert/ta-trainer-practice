@@ -8,11 +8,15 @@ function getRandomElement<T>(items: T[]): T  {
 }
 
 export function ControlPanel({setQuestion}: {setQuestion: (q: Question)=>void}): JSX.Element {
+    
+    function setRandomQuestion() {
+        setQuestion(getRandomElement(QUESTIONS as Question[]))
+    }
+    
+    
     return <Col>
         <h1>Control Panel</h1>
         {setQuestion}
-        <Button onClick={
-            () => setQuestion(getRandomElement(QUESTIONS) as Question)
-        }>New Question</Button>
+        <Button onClick={setRandomQuestion}>New Question</Button>
     </Col>
 }
