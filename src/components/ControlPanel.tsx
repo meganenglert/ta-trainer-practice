@@ -1,5 +1,5 @@
 import { Button , Col} from 'react-bootstrap';
-import { Question } from '../interfaces/question';
+import { Question, roundType } from '../interfaces/question';
 import QUESTIONS from '../assets/1000questions.json';
 import { Task as User } from 'editable-dnd-list';
 import { useState } from 'react';
@@ -54,10 +54,11 @@ export function ControlPanel({setQuestion, reveal, answerRevealed}:
 
        
         const [users, setUsers] = useState<User[]>(getLocalStorageUsers());
+        const [deck, setDeck] = useState<Question[]>(QUESTIONS as Question[]);
         
     function setRandomQuestion() {
         reveal(false);
-        setQuestion(getRandomElement(QUESTIONS as Question[]))
+        setQuestion(getRandomElement(deck as Question[]))
     }
 
     function save() {
@@ -68,6 +69,20 @@ export function ControlPanel({setQuestion, reveal, answerRevealed}:
         setUsers([...shuffle(users)]);
     }
     
+    function addNewQuestion() {
+        const newQuestion: Question = {
+            ID: Math.random(),
+            episode: -1,
+            airdate: "custom",
+            round: roundType.round1,
+            category: window.prompt("Question category: ") || "NO CATEGORY",
+            value: 500,
+            prompt: window.prompt("Question: ") || "NO QUESTION",
+            answer: window.prompt("Answer: ") || "NO ANSWER"
+        }
+        setDeck([...deck, newQuestion])
+    }
+
     return <Col>
         <h1>Control Panel</h1>
         <UserList users={users} setUsers={setUsers}></UserList>
@@ -75,5 +90,6 @@ export function ControlPanel({setQuestion, reveal, answerRevealed}:
         <Button onClick={setRandomQuestion}>New Question</Button>
         <Button onClick={shuffleUsers}>Shuffle Users</Button>
         <Button onClick={save} className="m-4" variant="success">Save</Button>
+        <Button onClick={addNewQuestion} className="m-4">Add new question</Button>
     </Col>
 }

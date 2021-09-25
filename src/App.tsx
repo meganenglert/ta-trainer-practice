@@ -6,7 +6,6 @@ import { QuestionViewer } from './components/QuestionViewer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container , Row} from 'react-bootstrap';
 import { Question } from './interfaces/question';
-import { UserList } from './components/UserList';
 
 
 function App(): JSX.Element {
