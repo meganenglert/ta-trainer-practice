@@ -6,18 +6,25 @@ import { QuestionViewer } from './components/QuestionViewer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container , Row} from 'react-bootstrap';
 import { Question } from './interfaces/question';
+import TEAMS from './assets/teams.json';
 import { AddCardModal } from './components/AddCardModal';
+import { Team } from './interfaces/team';
 
 
 function App(): JSX.Element {
 
+  
   const [activeQuestion, setActiveQuestion] = useState<Question>(QUESTIONS[0] as Question);
   const [answerRevealed, reveal] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);
   const [deck, setDeck] = useState<Question[]>(QUESTIONS as Question[]);
-      
+  const [teamList, setTeamList] = useState<Team[]>(TEAMS as Team[]);
   function addCard(newCard: Question) {
     setDeck([...deck, newCard]);
+  }
+  function addPoints(team: Team, points: number) {
+    team.score += points;
+    setTeamList([...teamList]);
   }
   
   return (
@@ -25,7 +32,7 @@ function App(): JSX.Element {
       <Row>
         
         <ControlPanel showAddCardModal={setVisible} setQuestion={setActiveQuestion} reveal={reveal} answerRevealed={answerRevealed} deck={deck}></ControlPanel>
-        <QuestionViewer question={activeQuestion} answerRevealed={answerRevealed}></QuestionViewer>
+        <QuestionViewer question={activeQuestion} answerRevealed={answerRevealed} teams={teamList} addPoints={addPoints}></QuestionViewer>
         <AddCardModal visible={visible} setVisible={setVisible} addCard={addCard}></AddCardModal>
       </Row>
     </Container>
