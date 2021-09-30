@@ -13,6 +13,7 @@ import { Team } from './interfaces/team';
 
 function App(): JSX.Element {
 
+  
   const [activeQuestion, setActiveQuestion] = useState<Question>(QUESTIONS[0] as Question);
   const [answerRevealed, reveal] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);

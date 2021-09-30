@@ -21,7 +21,7 @@ export function QuestionViewer({ question, answerRevealed, teams, addPoints }:
             </Card.Body>}
         </Card>
 
-        <TeamPointCounter team1={teams[0]} points={question.value} addPoints={addPoints}></TeamPointCounter>
+        <TeamPointCounter teamList={teams} points={question.value} addPoints={addPoints}></TeamPointCounter>
 
     </Col>
 }
