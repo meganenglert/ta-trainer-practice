@@ -26,7 +26,7 @@ export function TeamPointCounter({ teamList, points, addPoints, addTeamRevealed,
                 <Col>
                     <Card>
                         <Card.Body>
-                            <Card.Title>Team {team.ID}</Card.Title>
+                            <Card.Title>Team {team.name}</Card.Title>
                             <Card.Text>
                                 {team.score}
                             </Card.Text>
