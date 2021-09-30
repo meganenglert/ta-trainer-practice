@@ -1,8 +1,10 @@
-import { Col, Card } from 'react-bootstrap';
+import { Col, Card, ButtonGroup, Button} from 'react-bootstrap';
 import { Question } from '../interfaces/question';
+import { Team } from '../interfaces/team';
+import { TeamPointCounter } from './TeamPointCounter';
 
-export function QuestionViewer({ question, answerRevealed }:
-    { question: Question, answerRevealed: boolean }): JSX.Element {
+export function QuestionViewer({ question, answerRevealed, teams }:
+    { question: Question, answerRevealed: boolean, teams: Team[] }): JSX.Element {
     return <Col>
         <h1>Question Viewer</h1>
         <Card style={{ width: '18rem' }}>
@@ -18,6 +20,8 @@ export function QuestionViewer({ question, answerRevealed }:
                 </Card.Text>
             </Card.Body>}
         </Card>
+
+        <TeamPointCounter team1={teams[0]}></TeamPointCounter>
 
     </Col>
 }
