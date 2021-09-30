@@ -3,8 +3,8 @@ import { Question } from '../interfaces/question';
 import { Team } from '../interfaces/team';
 import { TeamPointCounter } from './TeamPointCounter';
 
-export function QuestionViewer({ question, answerRevealed, teams }:
-    { question: Question, answerRevealed: boolean, teams: Team[] }): JSX.Element {
+export function QuestionViewer({ question, answerRevealed, teams, addPoints }:
+    { question: Question, answerRevealed: boolean, teams: Team[], addPoints: (t: Team, p: number) => void }): JSX.Element {
     return <Col>
         <h1>Question Viewer</h1>
         <Card style={{ width: '18rem' }}>
@@ -21,7 +21,7 @@ export function QuestionViewer({ question, answerRevealed, teams }:
             </Card.Body>}
         </Card>
 
-        <TeamPointCounter team1={teams[0]}></TeamPointCounter>
+        <TeamPointCounter team1={teams[0]} addPoints={addPoints}></TeamPointCounter>
 
     </Col>
 }
