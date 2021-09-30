@@ -9,7 +9,7 @@ export function QuestionViewer({ question, answerRevealed }:
     
     return <Col>
         <h1>Question Viewer</h1>
-        <Card style={{ width: '18rem' }}>
+        <Card bg="white" text="dark">
             <Card.Body>
                 <Card.Title>Question:</Card.Title>
                 <Card.Text>

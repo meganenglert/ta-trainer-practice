@@ -29,7 +29,6 @@ export function TeamPointCounter({ teamList, points, addPoints, addTeamRevealed,
                             <Card.Text>
                                 {team.score}
                             </Card.Text>
-
                             <ButtonGroup id="change-points">
                                 <Button onClick={() => addPoints(team, points)} variant="success">Correct!</Button>
                                 <Button onClick={() => addPoints(team, -points)} variant="danger">Incorrect!</Button>
@@ -38,8 +37,10 @@ export function TeamPointCounter({ teamList, points, addPoints, addTeamRevealed,
                     </Card>
                 </Col>
             ))}
+        
         </Row>
-        <Button onClick={switchAddTeam} id="add-team">+ Add Team</Button>
+        <div>
+        <Button className = "m-4" variant="light" onClick={switchAddTeam} id="add-team">+ Add Team</Button>
         {addTeamRevealed && <Card.Body>
             <InputGroup className="mb-3">
                 <FormControl
@@ -50,6 +51,7 @@ export function TeamPointCounter({ teamList, points, addPoints, addTeamRevealed,
                 </Button>
             </InputGroup>
         </Card.Body>}
+        </div>
     </div >
 
 

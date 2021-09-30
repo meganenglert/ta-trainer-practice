@@ -68,8 +68,12 @@ export function ControlPanel({showAddCardModal, setQuestion, reveal, answerRevea
         <TeamPointCounter teamList={teamList} points={question.value} addPoints={addPoints} addTeamRevealed={addTeamRevealed} switchAddTeam={switchAddTeam} addTeam={addTeam}></TeamPointCounter>
 
         <h1>Control Panel</h1>
-        <Button onClick={() => reveal(!answerRevealed)} className="m-4">Reveal Answer</Button>
-        <Button onClick={setRandomQuestion} className="m-4">Next Question</Button>
-        <Button onClick={addNewCard} className="m-4">Add New Question</Button>
+        <div> 
+        <Button variant="light" onClick={() => reveal(!answerRevealed)} className="m-4">Reveal Answer</Button>
+        </div>
+        <Button variant="light" onClick={setRandomQuestion} className="m-4">Next Question</Button>
+        <div>
+        <Button variant="light" onClick={addNewCard} className="m-4">Add New Question</Button>
+        </div>
     </Col>
 }
