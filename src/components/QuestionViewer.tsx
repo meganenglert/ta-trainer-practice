@@ -3,8 +3,13 @@ import { Question } from '../interfaces/question';
 import { Team } from '../interfaces/team';
 import { TeamPointCounter } from './TeamPointCounter';
 
-export function QuestionViewer({ question, answerRevealed, teams, addPoints }:
-    { question: Question, answerRevealed: boolean, teams: Team[], addPoints: (t: Team, p: number) => void }): JSX.Element {
+export function QuestionViewer({ question, answerRevealed, teams, addPoints, addTeamRevealed, revealAddTeam, addTeam }:
+    { question: Question, answerRevealed: boolean, teams: Team[], addPoints: (t: Team, p: number) => void,
+        addTeamRevealed: boolean, revealAddTeam: (b: boolean)=>void, addTeam: (t: Team) => void } ): JSX.Element {
+    
+    function switchAddTeam() {
+        revealAddTeam(!addTeamRevealed);
+    }
     return <Col>
         <h1>Question Viewer</h1>
         <Card style={{ width: '18rem' }}>
@@ -21,7 +26,9 @@ export function QuestionViewer({ question, answerRevealed, teams, addPoints }:
             </Card.Body>}
         </Card>
 
-        <TeamPointCounter teamList={teams} points={question.value} addPoints={addPoints}></TeamPointCounter>
+        <TeamPointCounter teamList={teams} points={question.value} addPoints={addPoints} addTeamRevealed={addTeamRevealed} switchAddTeam={switchAddTeam} addTeam={addTeam}></TeamPointCounter>
+
+        
 
     </Col>
 }
