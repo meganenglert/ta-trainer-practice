@@ -2,8 +2,9 @@ import { Col, Card, ButtonGroup, Button, Row } from 'react-bootstrap';
 import { Question } from '../interfaces/question';
 import { Team } from '../interfaces/team';
 
-export function TeamPointCounter({ teamList, points, addPoints }:
-    { teamList: Team[], points: number, addPoints: (t: Team, p: number) => void }): JSX.Element {
+export function TeamPointCounter({teamList, points, addPoints, addTeamRevealed, switchAddTeam }:
+    { teamList: Team[], points: number, addPoints: (t: Team, p: number) => void,
+        addTeamRevealed: boolean, switchAddTeam: ()=>void }): JSX.Element {
 
     return <div id="scores">
         <h1>Scoreboard</h1>
@@ -26,9 +27,15 @@ export function TeamPointCounter({ teamList, points, addPoints }:
                 </Col>
             ))}
         </Row>
+        <Button onClick={switchAddTeam} id="add-team">+ Add Team</Button>
+        {addTeamRevealed && <Card.Body>
+                <Card.Text>
+                    woohoo
+                </Card.Text>
+            </Card.Body>}
     </div >
 
-
+    
 
 }
 
