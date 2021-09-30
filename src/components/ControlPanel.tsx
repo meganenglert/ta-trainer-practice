@@ -1,9 +1,7 @@
 import { Button , Col} from 'react-bootstrap';
 import { Question, roundType } from '../interfaces/question';
 import QUESTIONS from '../assets/1000questions.json';
-import { Task as User } from 'editable-dnd-list';
 import { useState } from 'react';
-import { UserList } from './UserList';
 
 // Same source as Dr. Bart used (I am lazy)
 function getRandomElement<T>(items: T[]): T  {
@@ -33,39 +31,15 @@ export function shuffle<T>(array: T[]): T[] {
     return array;
   }
 
-export const INITIAL_USERS: User[] = [
-    {id: '1', text: "Megan"},
-    {id: '2', text: "suki"},
-    {id: '3', text: 'sebastian'}
-];
 
-export function getLocalStorageUsers(): User[] {
-    let rawUsers: string|null = localStorage.getItem(LOCAL_STORAGE_USERS);
-    if (rawUsers === null) {
-        return [...INITIAL_USERS];
-    }
-    else {
-        return JSON.parse(rawUsers);
-    }
-}
 
 export function ControlPanel({showAddCardModal, setQuestion, reveal, answerRevealed, deck}: 
     {showAddCardModal: (b: boolean)=>void,setQuestion: (q: Question)=>void, reveal: (r: boolean)=>void, answerRevealed: boolean, deck: Question[]}): JSX.Element {
 
-       
-        const [users, setUsers] = useState<User[]>(getLocalStorageUsers());
         
     function setRandomQuestion() {
         reveal(false);
         setQuestion(getRandomElement(deck as Question[]))
-    }
-
-    function save() {
-        localStorage.setItem(LOCAL_STORAGE_USERS, JSON.stringify(users));
-    }
-    
-    function shuffleUsers() {
-        setUsers([...shuffle(users)]);
     }
     
     function addNewCard() {
@@ -73,11 +47,8 @@ export function ControlPanel({showAddCardModal, setQuestion, reveal, answerRevea
     }
     return <Col>
         <h1>Control Panel</h1>
-        <UserList users={users} setUsers={setUsers}></UserList>
-        <Button onClick={() => reveal(!answerRevealed)}>Reveal Answer</Button>
-        <Button onClick={setRandomQuestion}>New Question</Button>
-        <Button onClick={shuffleUsers}>Shuffle Users</Button>
-        <Button onClick={save} className="m-4" variant="success">Save</Button>
-        <Button onClick={addNewCard} className="m-4">Add new question</Button>
+        <Button onClick={() => reveal(!answerRevealed)} className="m-4">Reveal Answer</Button>
+        <Button onClick={setRandomQuestion} className="m-4">Next Question</Button>
+        <Button onClick={addNewCard} className="m-4">Add New Question</Button>
     </Col>
 }
