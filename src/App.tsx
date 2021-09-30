@@ -23,6 +23,9 @@ function App(): JSX.Element {
   function addCard(newCard: Question) {
     setDeck([...deck, newCard]);
   }
+  function addTeam(newTeam: Team) {
+    setTeamList([...teamList, newTeam]);
+  }
   function addPoints(team: Team, points: number) {
     team.score += points;
     setTeamList([...teamList]);
@@ -34,7 +37,7 @@ function App(): JSX.Element {
       <Row>
         
         <ControlPanel showAddCardModal={setVisible} setQuestion={setActiveQuestion} reveal={reveal} answerRevealed={answerRevealed} deck={deck}></ControlPanel>
-        <QuestionViewer question={activeQuestion} answerRevealed={answerRevealed} teams={teamList} addPoints={addPoints} addTeamRevealed={addTeamRevealed} revealAddTeam={revealAddTeam}></QuestionViewer>
+        <QuestionViewer question={activeQuestion} answerRevealed={answerRevealed} teams={teamList} addPoints={addPoints} addTeamRevealed={addTeamRevealed} revealAddTeam={revealAddTeam} addTeam={addTeam}></QuestionViewer>
         <AddCardModal visible={visible} setVisible={setVisible} addCard={addCard}></AddCardModal>
       </Row>
     </Container>
