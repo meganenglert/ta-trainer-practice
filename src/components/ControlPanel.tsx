@@ -1,7 +1,9 @@
 import { Button , Col} from 'react-bootstrap';
 import { Question, roundType } from '../interfaces/question';
-import QUESTIONS from '../assets/1000questions.json';
 import { useState } from 'react';
+import { Team } from '../interfaces/team';
+import TEAMS from '../assets/teams.json';
+import { TeamPointCounter } from './TeamPointCounter';
 
 // Same source as Dr. Bart used (I am lazy)
 function getRandomElement<T>(items: T[]): T  {
@@ -33,10 +35,27 @@ export function shuffle<T>(array: T[]): T[] {
 
 
 
-export function ControlPanel({showAddCardModal, setQuestion, reveal, answerRevealed, deck}: 
-    {showAddCardModal: (b: boolean)=>void,setQuestion: (q: Question)=>void, reveal: (r: boolean)=>void, answerRevealed: boolean, deck: Question[]}): JSX.Element {
+export function ControlPanel({showAddCardModal, setQuestion, reveal, answerRevealed, deck, question}: 
+    {showAddCardModal: (b: boolean)=>void,setQuestion: (q: Question)=>void, reveal: (r: boolean)=>void, answerRevealed: boolean, deck: Question[], question: Question}): JSX.Element {
 
-        
+    
+    const [teamList, setTeamList] = useState<Team[]>(TEAMS as Team[]);
+    
+    const [addTeamRevealed, revealAddTeam] = useState<boolean>(false);
+
+    function switchAddTeam() {
+        revealAddTeam(!addTeamRevealed);
+    }
+
+
+    function addTeam(newTeam: Team) {
+        setTeamList([...teamList, newTeam]);
+      }
+      function addPoints(team: Team, points: number) {
+        team.score += points;
+        setTeamList([...teamList]);
+      }
+
     function setRandomQuestion() {
         reveal(false);
         setQuestion(getRandomElement(deck as Question[]))
@@ -46,6 +65,8 @@ export function ControlPanel({showAddCardModal, setQuestion, reveal, answerRevea
         showAddCardModal(true);
     }
     return <Col>
+        <TeamPointCounter teamList={teamList} points={question.value} addPoints={addPoints} addTeamRevealed={addTeamRevealed} switchAddTeam={switchAddTeam} addTeam={addTeam}></TeamPointCounter>
+
         <h1>Control Panel</h1>
         <Button onClick={() => reveal(!answerRevealed)} className="m-4">Reveal Answer</Button>
         <Button onClick={setRandomQuestion} className="m-4">Next Question</Button>

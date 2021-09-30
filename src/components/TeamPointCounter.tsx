@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Col, Card, ButtonGroup, Button, Row, InputGroup, FormControl } from 'react-bootstrap';
-import { Question } from '../interfaces/question';
 import { Team } from '../interfaces/team';
 
 export function TeamPointCounter({ teamList, points, addPoints, addTeamRevealed, switchAddTeam, addTeam }:
