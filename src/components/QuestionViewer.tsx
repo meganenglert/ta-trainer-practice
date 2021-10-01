@@ -19,7 +19,7 @@ export function QuestionViewer({ question, answerRevealed }:
             </Card.Body>
             { answerRevealed && <Card.Body>
                 <Card.Text>
-                    {question.answer}
+                    <strong>Answer: </strong>{question.answer}
                 </Card.Text>
             </Card.Body>}
         </Card>
