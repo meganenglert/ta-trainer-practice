@@ -6,13 +6,11 @@
   background-color: #797D62;
 }
 
-div#source-link {
+.link {
   color: white;
 }
 
-div#source-link hover {
-  color: lightgray;
-}
+
 #question-card {
   color: black;
 }

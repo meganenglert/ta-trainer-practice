@@ -22,14 +22,14 @@ function App(): JSX.Element {
   }
   return (
     <Container className="App">
-      <h1>jeopardy!</h1>
+      <h1>JEOPARDY!</h1>
       <Row>
         
         <ControlPanel showAddCardModal={setVisible} setQuestion={setActiveQuestion} reveal={reveal} answerRevealed={answerRevealed} deck={deck} question={activeQuestion}></ControlPanel>
         <QuestionViewer question={activeQuestion} answerRevealed={answerRevealed}></QuestionViewer>
         <AddCardModal visible={visible} setVisible={setVisible} addCard={addCard}></AddCardModal>
       </Row>
-      <div id="source-link"><a href="https://www.reddit.com/r/datasets/comments/1uyd0t/200000_jeopardy_questions_in_a_json_file/">View question source here!</a></div>
+      <div><a className="link" href="https://www.reddit.com/r/datasets/comments/1uyd0t/200000_jeopardy_questions_in_a_json_file/">View question source here!</a></div>
     </Container>
   );
 }

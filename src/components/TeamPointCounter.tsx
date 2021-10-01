@@ -23,7 +23,7 @@ export function TeamPointCounter({ teamList, points, addPoints, addTeamRevealed,
         <Row xs={1} md={2} className="g-4">
             {teamList.map((team) => (
                 <Col>
-                    <Card>
+                    <Card bg="light" text="dark">
                         <Card.Body>
                             <Card.Title>Team {team.name}</Card.Title>
                             <Card.Text>
@@ -46,7 +46,7 @@ export function TeamPointCounter({ teamList, points, addPoints, addTeamRevealed,
                 <FormControl
                     type="string" placeholder="New Team Name" value={teamName} onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setTeamName(ev.target.value)}
                 />
-                <Button onClick={addNewTeam} variant="outline-secondary" id="add-new-team">
+                <Button onClick={addNewTeam} variant="dark" id="add-new-team">
                     Add!
                 </Button>
             </InputGroup>

@@ -11,9 +11,10 @@ export function QuestionViewer({ question, answerRevealed }:
         <h1>Question Viewer</h1>
         <Card bg="white" text="dark">
             <Card.Body>
-                <Card.Title>Question:</Card.Title>
+                <Card.Title>{question.category}</Card.Title>
                 <Card.Text>
                     {question.prompt}
+                    <p><small><strong>Points: {question.value}</strong></small></p>
                 </Card.Text>
             </Card.Body>
             { answerRevealed && <Card.Body>
