@@ -1,8 +1,23 @@
 .App {
   text-align: center;
   margin-top: 1em;
+  font-family: Georgia, serif;
+  color: white;
+  background-color: #797D62;
 }
 
+.link {
+  color: white;
+}
+
+
+#question-card {
+  color: black;
+}
+
+h1 {
+  font-size: 50px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -25,9 +40,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
